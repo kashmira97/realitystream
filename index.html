@@ -32,14 +32,14 @@ loadScript(externalSite + '/cloud/run/js/param-input.js', function(results) {
   padding-bottom: 0px;
 }
 button {
-  background-color: #4CAF50;
+  background-color: #0052cc;
   border: none;
-  color: white;
+    color: white;
+    border-radius: 6px;
   padding: 10px 16px;
   font-size: 14px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 4px;
   white-space: nowrap;
 }
 </style>
@@ -71,20 +71,41 @@ View <a href="../reports/">Report Output</a> (Under Development) - View <a href=
 
 <select id="parambase"></select><br>
 
-<div id="paramText" class="codetext" rows="10" contenteditable><pre>
-<b>folder:</b> naics6-bees-counties
+<div id="dcidPanel" style="margin:12px 0 10px 0; padding:10px; border:1px solid #ddd; border-radius:8px;">
+  <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+    <b>Features</b>
+    <button id="addFeatureBtn" type="button">+ Add</button>
+    <button id="invertBtn" type="button" title="Swap target with selected feature">⇄ Invert</button>
+    <button id="getFeatureBtn" type="button">Get Data (Feature)</button>
 
-<b>features:</b>
+
+  </div>
+
+  <div id="featuresList" style="margin-top:8px;"></div>
+
+  <div style="margin-top:10px; display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+    <b>Target</b>
+    <input id="targetInput" type="text" placeholder="targets.dcid" style="padding:8px; width:420px; max-width:100%;">
+    <button id="getTargetBtn" type="button">Get Data (Target)</button>
+  </div>
+</div>
+
+
+<textarea id="paramText" class="codetext" rows="14" style="width:100%; font-family:monospace;">
+folder: naics6-bees-counties
+
+features:
   data: industries
   common: Fips
   path: https://raw.githubusercontent.com/ModelEarth/community-timelines/main/training/naics6/US/counties/2020/US-ME-training-naics6-counties-2020.csv
 
-<b>targets:</b>
+targets:
   data: bees
   path: https://raw.githubusercontent.com/ModelEarth/bee-data/main/targets/bees-targets-top-20-percent.csv
 
-<b>models:</b> xgboost
-</pre></div>Edit your yaml above and paste into our <a href="input/industries/">Run Models CoLab</a>.<br><br>
+models: xgboost
+</textarea>
+Edit your yaml above and paste into our <a href="input/industries/">Run Models CoLab</a>.<br><br>
 
 
   <div id="aboutDiv"></div>
